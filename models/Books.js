@@ -2,22 +2,32 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const transactionSchema = new Schema({
-  name: {
+const bookSchema = new Schema({
+  title: {
     type: String,
     trim: true,
-    required: "Enter a name for transaction"
+    required: "Enter a title for book"
   },
-  value: {
-    type: Number,
-    required: "Enter an amount"
+  description: {
+    type: String,
+    trim: true,
+    required: "Enter a description"
   },
-  date: {
-    type: Date,
-    default: Date.now
-  }
+  authors: {
+    type: Object,
+    required: "Enter authors"
+  },
+  image:{
+    type: String,
+    required: "Enter a cover image"
+  },
+  link:{
+    type: String,
+    required: "Enter a link"
+  },
+  date: { type: Date, default: Date.now }
 });
 
-const Books = mongoose.model("books", transactionSchema);
+const Books = mongoose.model("books", bookSchema);
 
 module.exports = Books;
